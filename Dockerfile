@@ -8,4 +8,5 @@ ADD ./mysql-start.sh /mysql-start.sh
 ADD ./foreground.sh /etc/apache2/foreground.sh
 ADD ./supervisord.conf /etc/supervisord.conf
 RUN chmod 755 /mysql-start.sh
+RUN chmod 755 /etc/apache2/foreground.sh
 CMD ["supervisord", "-n"]
