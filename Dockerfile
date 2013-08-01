@@ -7,6 +7,7 @@ RUN easy_install supervisor
 ADD ./start.sh /start.sh
 ADD ./foreground.sh /etc/apache2/foreground.sh
 ADD ./supervisord.conf /etc/supervisord.conf
+ADD http://wordpress.org/latest.tar.gz /var/www/
 RUN chmod 755 /start.sh
 RUN chmod 755 /etc/apache2/foreground.sh
 EXPOSE 80
