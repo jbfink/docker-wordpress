@@ -4,7 +4,7 @@ To build, make sure you have Docker [installed](http://www.docker.io/gettingstar
 docker build -t <yourname>/wordpress .
 ```
 
-Or, alternately, build DIRECTLY from the github repo like some sort of SUPER FUTURISTIC FLYING CAR MECHANIC:
+Or, alternately, build DIRECTLY from the github repo like some sort of AMAZING FUTURO JULES-VERNESQUE SEA EXPLORER:
 ```
 docker build -t <yourname>/wordpress git://github.com/jbfink/docker-wordpress.git
 ```
