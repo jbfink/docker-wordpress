@@ -11,7 +11,7 @@ docker build -t <yourname>/wordpress git://github.com/jbfink/docker-wordpress.gi
 
 Then run it! Woo! 
 ```
-docker run -d <yourname>/lampstack
+docker run -d <yourname>/wordpress
 ```
 
 
