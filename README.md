@@ -4,6 +4,11 @@ To build, make sure you have Docker [installed](http://www.docker.io/gettingstar
 docker build -t <yourname>/lampstack .
 ```
 
+Or, alternately, build DIRECTLY from the github repo like some sort of SUPER FUTURISTIC FLYING CAR MECHANIC:
+```
+docker build -t <yourname>/lampstack git://github.com/jbfink/docker-lampstack.git
+```
+
 Then run it! Woo! 
 ```
 docker run -d <yourname>/lampstack
