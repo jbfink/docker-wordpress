@@ -11,10 +11,21 @@ echo mysql root password: $MYSQL_PASSWORD
 echo wordpress password: $WORDPRESS_PASSWORD
 echo $MYSQL_PASSWORD > /mysql-root-pw.txt
 echo $WORDPRESS_PASSWORD > /wordpress-db-pw.txt
-# *extreme* apologies for the butt ugly line that follows. It works.
-# No idea if it will *keep* working if wp-config changes radically between
-# versions, but I guess we'll have to see, huh?
-cat /var/www/wp-config-sample.php | sed 's/database_name_here/'$WORDPRESS_DB'/' | sed 's/username_here/'$WORDPRESS_DB'/' | sed 's/password_here/'$WORDPRESS_PASSWORD'/' | sed '/\x27AUTH_KEY\x27/s/put\ your\ unique\ phrase\ here/'`pwgen -c -n -1 65`'/' | sed '/\x27SECURE_AUTH_KEY\x27/s/put\ your\ unique\ phrase\ here/'`pwgen -c -n -1 65`'/' | sed '/\x27LOGGED_IN_KEY\x27/s/put\ your\ unique\ phrase\ here/'`pwgen -c -n -1 65`'/' | sed '/\x27NONCE_KEY\x27/s/put\ your\ unique\ phrase\ here/'`pwgen -c -n -1 65`'/' | sed '/\x27AUTH_SALT\x27/s/put\ your\ unique\ phrase\ here/'`pwgen -c -n -1 65`'/'  | sed '/\x27SECURE_AUTH_SALT\x27/s/put\ your\ unique\ phrase\ here/'`pwgen -c -n -1 65`'/'  | sed '/\x27LOGGED_IN_SALT\x27/s/put\ your\ unique\ phrase\ here/'`pwgen -c -n -1 65`'/' | sed '/\x27NONCE_SALT\x27/s/put\ your\ unique\ phrase\ here/'`pwgen -c -n -1 65`'/' > /var/www/wp-config.php
+#there used to be a huge ugly line of sed and cat and pipe and stuff below,
+#but thanks to @djfiander's thing at https://gist.github.com/djfiander/6141138
+#there isn't now.
+
+sed -e "s/database_name_here/$WORDPRESS_DB/
+s/username_here/$WORDPRESS_DB/
+s/password_here/$WORDPRESS_PASSWORD/
+/'AUTH_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
+/'SECURE_AUTH_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
+/'LOGGED_IN_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
+/'NONCE_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
+/'AUTH_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
+/'SECURE_AUTH_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
+/'LOGGED_IN_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
+/'NONCE_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/" /var/www/wp-config-sample.php > /var/www/wp-config.php
 
 chown www-data:www-data /var/www/wp-config.php
 mysqladmin -u root password $MYSQL_PASSWORD 
