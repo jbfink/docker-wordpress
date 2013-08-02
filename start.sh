@@ -1,6 +1,6 @@
 #!/bin/bash
 #mysql has to be started this way as it doesn't work to call from /etc/init.d
-/usr/sbin/mysqld & 
+/usr/bin/mysqld_safe & 
 sleep 10s
 # Here we generate random passwords (thank you pwgen!). The first two are for mysql users, the last batch for random keys in wp-config.php
 WORDPRESS_DB="wordpress"
