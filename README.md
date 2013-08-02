@@ -21,10 +21,13 @@ Check docker logs after running to see MySQL root password and Wordpress MySQL p
 echo $(docker logs <container-id> | grep password)
 ```
 
+(note: you won't need the mysql root or the wordpress db password normally)
+
 Then find the external port assigned to your container:
 
 ```
 docker port <container-id> 80 
 ```
 
-Visit in a webrowser, then fill in the config. Database user is "wordpress", fill in the password with what you grepped earlier. Done! 
+Visit in a webrowser, then fill out the form. No need to mess with wp-config.php, it's been auto-generated with proper values. 
+
