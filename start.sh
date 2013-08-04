@@ -1,4 +1,5 @@
 #!/bin/bash
+if [ ! -f /var/www/wp-config.php ]; then
 #mysql has to be started this way as it doesn't work to call from /etc/init.d
 /usr/bin/mysqld_safe & 
 sleep 10s
@@ -32,4 +33,5 @@ mysqladmin -u root password $MYSQL_PASSWORD
 mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' IDENTIFIED BY '$WORDPRESS_PASSWORD'; FLUSH PRIVILEGES;"
 killall mysqld
 sleep 10s
+fi
 supervisord -n
