@@ -1,3 +1,6 @@
+(note: [Eugene Ware](http://github.com/eugeneware) has a Docker wordpress container build on nginx with some other goodies; you can check out his work [here](http://github.com/eugeneware/docker-wordpress-nginx).)
+
+
 This repo contains a recipe for making a [Docker](http://docker.io) container. 
 To build, make sure you have Docker [installed](http://www.docker.io/gettingstarted/), clone this repo somewhere, and then run:
 ```
