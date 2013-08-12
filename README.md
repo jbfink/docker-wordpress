@@ -5,7 +5,7 @@
 ```
 dial unix /var/run/docker.sock: permission denied
 ```
-when you run the below commands, simply use use sudo. This is a [known issue](https://twitter.com/docker/status/366040073793323008).)
+when you run the below commands, simply use sudo. This is a [known issue](https://twitter.com/docker/status/366040073793323008).)
 
 
 This repo contains a recipe for making a [Docker](http://docker.io) container for Wordpress, using Linux, Apache and MySQL. 
