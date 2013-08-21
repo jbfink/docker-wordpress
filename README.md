@@ -41,3 +41,10 @@ docker port <container-id> 80
 
 Visit in a webrowser, then fill out the form. No need to mess with wp-config.php, it's been auto-generated with proper values. 
 
+
+Note that this image now has a user account (appropriately named "user") and passwordless sudo for that user account. The password is generated upon startup; check logs for "ssh user password", docker ps for the port assigned to 22, and something this to get in: 
+
+```
+ssh -p <port> user@localhost
+```
+
