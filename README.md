@@ -11,12 +11,12 @@ when you run the below commands, simply use sudo. This is a [known issue](https:
 This repo contains a recipe for making a [Docker](http://docker.io) container for Wordpress, using Linux, Apache and MySQL. 
 To build, make sure you have Docker [installed](http://www.docker.io/gettingstarted/), clone this repo somewhere, and then run:
 ```
-docker build -t <yourname>/wordpress .
+docker build -rm -t <yourname>/wordpress .
 ```
 
 Or, alternately, build DIRECTLY from the github repo like some sort of AMAZING FUTURO JULES-VERNESQUE SEA EXPLORER:
 ```
-docker build -t <yourname>/wordpress git://github.com/jbfink/docker-wordpress.git
+docker build -rm -t <yourname>/wordpress git://github.com/jbfink/docker-wordpress.git
 ```
 
 Then run it! Woo! 
