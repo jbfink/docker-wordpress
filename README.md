@@ -21,7 +21,7 @@ docker build -rm -t <yourname>/wordpress git://github.com/jbfink/docker-wordpres
 
 Then run it! Woo! 
 ```
-docker run -d <yourname>/wordpress
+docker run -d -p 80 -p 22 <yourname>/wordpress
 ```
 
 
