@@ -35,6 +35,11 @@ s/password_here/$WORDPRESS_PASSWORD/
 /'LOGGED_IN_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
 /'NONCE_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/" /var/www/wp-config-sample.php > /var/www/wp-config.php
 
+mv /etc/php5/apache2/php.ini /etc/php5/apache2/php.ini.orig
+sed "s/upload_max_filesize = 2M/upload_max_filesize = 20M/" /etc/php5/apache2/php.ini.orig > /etc/php5/apache2/php.ini
+
+ 
+
 chown www-data:www-data /var/www/wp-config.php
 mysqladmin -u root password $MYSQL_PASSWORD 
 mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' IDENTIFIED BY '$WORDPRESS_PASSWORD'; FLUSH PRIVILEGES;"
