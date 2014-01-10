@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 MAINTAINER John Fink <john.fink@gmail.com>
-RUN apt-get update # Thu Dec 12 13:45:59 EST 2013
+RUN apt-get update # Fri Dec 13 12:24:34 EST 2013
 RUN apt-get -y upgrade
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql openssh-server sudo php5-ldap
 RUN easy_install supervisor
