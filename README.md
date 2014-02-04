@@ -33,8 +33,13 @@ echo $(docker logs <container-id> | grep password)
 
 (note: you won't need the mysql root or the wordpress db password normally)
 
-Then find the external port assigned to your container:
 
+Find your container ID:
+```
+docker ps
+```
+
+Then find the external port assigned to your container:
 ```
 docker port <container-id> 80 
 ```
