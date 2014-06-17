@@ -19,32 +19,38 @@ Or, alternately, build DIRECTLY from the github repo like some sort of AMAZING F
 docker build -rm -t <yourname>/wordpress git://github.com/jbfink/docker-wordpress.git
 ```
 
-Then run it! Woo! 
+Then run it, specifying your desired ports! Woo! 
 ```
-docker run -d -p 80 -p 22 <yourname>/wordpress
+docker run --name wordpress -d -p <http_port>:80 -p <ssh_port>:22 <yourname>/wordpress 
 ```
 
 
 Check docker logs after running to see MySQL root password and Wordpress MySQL password, as so
 
 ```
-echo $(docker logs <container-id> | grep password)
+echo $(docker logs wordpress | grep password)
 ```
 
 (note: you won't need the mysql root or the wordpress db password normally)
 
-Then find the external port assigned to your container:
+
+Your wordpress container should now be live, open a web browser and go to http://localhost:<http_port>, then fill out the form. No need to mess with wp-config.php, it's been auto-generated with proper values. 
+
+
+Note that this image now has a user account (appropriately named "user") and passwordless sudo for that user account. The password is generated upon startup; check logs for "ssh user password", and something like this to get in: 
 
 ```
-docker port <container-id> 80 
+ssh -p <ssh_port> user@localhost
 ```
 
-Visit in a webrowser, then fill out the form. No need to mess with wp-config.php, it's been auto-generated with proper values. 
-
-
-Note that this image now has a user account (appropriately named "user") and passwordless sudo for that user account. The password is generated upon startup; check logs for "ssh user password", docker ps for the port assigned to 22, and something like this to get in: 
-
+You can shutdown your wordpress container like this:
 ```
-ssh -p <port> user@localhost
+docker stop wordpress
 ```
 
+And start it back up like this:
+```
+docker start wordpress
+```
+
+Enjoy your wordpress install courtesy of Docker!
