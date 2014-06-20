@@ -1,5 +1,6 @@
 docker-wordpress with cloudfuse
 -------------------------------
+(n.b. - make sure you're in the ```cloudfuse``` branch! Master branch of this repo doesn't have any cloudfuse stuff.)
 
 This particular branch of docker-wordpress has a lot of extra stuff for it to work with cloudfuse -- check the Dockerfile for more info. When the container is run, whatever your Swift install is will live at /var/www/wp-content/files and you can write to it from the web interface.
 
