@@ -1,0 +1,5 @@
+username=
+tenant=
+password=
+authurl=http://142.150.191.223:5000/v2.0/
+region=RegionOne
