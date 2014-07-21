@@ -43,6 +43,8 @@ sed "s/upload_max_filesize = 2M/upload_max_filesize = 20M/" /etc/php5/apache2/ph
 chown www-data:www-data /var/www/wp-config.php
 mysqladmin -u root password $MYSQL_PASSWORD 
 mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' IDENTIFIED BY '$WORDPRESS_PASSWORD'; FLUSH PRIVILEGES;"
+#Load the dump
+mysql -uwordpress -p$WORDPRESS_PASSWORD wordpress < /vaw/www/wp-content/dump/sql.dump
 killall mysqld
 sleep 10s
 fi
