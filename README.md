@@ -21,9 +21,15 @@ docker build -rm -t <yourname>/wordpress git://github.com/jbfink/docker-wordpres
 
 Then run it, specifying your desired ports! Woo! 
 ```
-docker run --name wordpress -v <host wp-content>:/var/www/wp-content -d -p <http_port>:80 -p <ssh_port>:22 <yourname>/wordpress 
+docker run --name wordpress -v <host wp-content>:/var/www/wp-content -e WP_DBNAME=<db name> -d -p <http_port>:80 -p <ssh_port>:22 <yourname>/wordpress 
 ```
 Create in your wp-content a folder named "dump". In this folder put your mysql dump in to file named dump.sql. When container startup, the dump is loaded in to mysql wordpress db. Before container is shoutted down, is update a dump.sql file with last modify.
+
+The db name env var is used for name of db and added to suffix table name in your wp-config.php
+
+```
+'wp_$DB_NAME'
+```
 
 Check docker logs after running to see MySQL root password and Wordpress MySQL password, as so
 
