@@ -56,8 +56,11 @@ mysql -uwordpress -p$WORDPRESS_PASSWORD $WORDPRESS_DB < /var/www/wp-content/dump
 killall mysqld
 sleep 10s
 fi
-ln -s /etc/dump_db.sh /etc/init.d/dump_db.sh
-chmod 755 /etc/init.d/dump_db.sh
-update-rc.d dump_db.sh start 20 0 6 .
+#ln -s /etc/dump_db.sh /etc/init.d/dump_db.sh
+#chmod 755 /etc/init.d/dump_db.sh
+#update-rc.d dump_db.sh start 20 0 6 .
 chown -R www-data:www-data /var/www/
-supervisord -n
+#activate mod_rewrite
+a2enmod rewrite
+ls -al /etc/apache2/mods-enabled/rewrite.load
+supervisord -n -e debug
