@@ -1,4 +1,4 @@
-(note: [Eugene Ware](http://github.com/eugeneware) has a Docker wordpress container build on nginx with some other goodies; you can check out his work [here](http://github.com/eugeneware/docker-wordpress-nginx).)
+(note: [Eugene Ware](http://github.com/eugeneware) has a Docker wordpress container built on nginx with some other goodies; you can check out his work [here](http://github.com/eugeneware/docker-wordpress-nginx).)
 
 
 (N.B. the way that Docker handles permissions may vary depending on your current Docker version. If you're getting errors like
@@ -14,7 +14,7 @@ To build, make sure you have Docker [installed](http://www.docker.io/gettingstar
 docker build -rm -t <yourname>/wordpress .
 ```
 
-Or, alternately, build DIRECTLY from the github repo like some sort of AMAZING FUTURO JULES-VERNESQUE SEA EXPLORER:
+Or, alternatively, build DIRECTLY from the github repo like some sort of AMAZING FUTURO JULES-VERNESQUE SEA EXPLORER:
 ```
 docker build -rm -t <yourname>/wordpress git://github.com/jbfink/docker-wordpress.git
 ```
@@ -23,15 +23,15 @@ Then run it, specifying your desired ports! Woo!
 ```
 docker run --name wordpress -v <host wp-content>:/var/www/wp-content -e WP_DBNAME=<db name> -d -p <http_port>:80 -p <ssh_port>:22 <yourname>/wordpress 
 ```
-Create in your wp-content a folder named "dump". In this folder put your mysql dump in to file named dump.sql. When container startup, the dump is loaded in to mysql wordpress db. Before container is shoutted down, is update a dump.sql file with last modify.
+Create in your wp-content a folder named "dump". In this folder put your mysql dump and name it dump.sql. When the container starts up, the dump is loaded in to the mysql wordpress db. Before the container is shutted down, the dump.sql file is updated with the last modify.
 
-The db name env var is used for name of db and added to suffix table name in your wp-config.php
+The db name env var is used as the name of the db and added to suffix table name in your wp-config.php
 
 ```
 'wp_$DB_NAME'
 ```
 
-Check docker logs after running to see MySQL root password and Wordpress MySQL password, as so
+Check docker logs after running to see MySQL root password and Wordpress MySQL password, as follows
 
 ```
 echo $(docker logs wordpress | grep password)
