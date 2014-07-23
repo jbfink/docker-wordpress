@@ -1,4 +1,4 @@
-(note: [Eugene Ware](http://github.com/eugeneware) has a Docker wordpress container built on nginx with some other goodies; you can check out his work [here](http://github.com/eugeneware/docker-wordpress-nginx).)
+(note: [Eugene Ware](http://github.com/eugeneware) has a Docker wordpress container build on nginx with some other goodies; you can check out his work [here](http://github.com/eugeneware/docker-wordpress-nginx).)
 
 
 (N.B. the way that Docker handles permissions may vary depending on your current Docker version. If you're getting errors like
