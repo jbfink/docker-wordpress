@@ -4,7 +4,7 @@ if [ ! -f /var/www/wp-config.php ]; then
 #let's create a user to ssh into
 SSH_USERPASS=`pwgen -c -n -1 8`
 mkdir /home/user
-useradd -G sudo -d /home/user user
+useradd -G sudo -d /home/user -s /bin/bash user
 chown user /home/user
 echo user:$SSH_USERPASS | chpasswd
 echo ssh user password: $SSH_USERPASS
