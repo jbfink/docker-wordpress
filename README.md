@@ -4,7 +4,7 @@
 docker exec -i -t docker-wordpress bash
 ```
 
-easy!
+easy!)
 
 (note: [Eugene Ware](http://github.com/eugeneware) has a Docker wordpress container build on nginx with some other goodies; you can check out his work [here](http://github.com/eugeneware/docker-wordpress-nginx).)
 
