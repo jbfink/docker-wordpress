@@ -21,7 +21,7 @@ docker build -rm -t <yourname>/wordpress git://github.com/jbfink/docker-wordpres
 
 Then run it, specifying your desired ports! Woo! 
 ```
-docker run --name wordpress -d -p <http_port>:80 -p <ssh_port>:22 <yourname>/wordpress 
+docker run --name wordpress -d -p <http_port>:80 <yourname>/wordpress 
 ```
 
 
@@ -36,12 +36,6 @@ echo $(docker logs wordpress | grep password)
 
 Your wordpress container should now be live, open a web browser and go to http://localhost:<http_port>, then fill out the form. No need to mess with wp-config.php, it's been auto-generated with proper values. 
 
-
-Note that this image now has a user account (appropriately named "user") and passwordless sudo for that user account. The password is generated upon startup; check logs for "ssh user password", and something like this to get in: 
-
-```
-ssh -p <ssh_port> user@localhost
-```
 
 You can shutdown your wordpress container like this:
 ```
